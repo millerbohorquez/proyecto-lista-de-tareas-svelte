@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: white;
+}
+body.oscuro
+{
+    background: black;
+}
+.todo
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+.container
+{
+    background-image: url(https://cdn.pixabay.com/photo/2016/01/23/23/54/mountains-1158269_1280.jpg);
+    background-repeat: no-repeat;
+    background-position:center;
+    width: 100%;
+    height: 250px;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+    
+}
+body.oscuro #fondo
+{
+    background-image: url(https://cdn.pixabay.com/photo/2024/03/29/02/30/ai-generated-8662021_1280.jpg);
+}
+.sub_container
+{
+    background:linear-gradient(90deg, rgba(180, 15, 78, 0.7), rgba(6, 20, 143, 0.7)) ;
+    
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.lector
+{
+    position: absolute;
+    width: 50%;
+    height: 70%;
+    margin-top: 35px;
+    
+}
+.titulo
+{
+    display: flex;
+    position: relative;
+    height: 50%;
+    align-items: center;
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 900;
+    color: white;
+}
+.titulo button
+{
+    position: absolute;
+    margin-left: 94%;
+    font-size: 40px;
+    color: white;
+    background: transparent;
+    border: 1px solid transparent;
+}
+.titulo button:hover
+{
+    font-size: 45px;
+}
+.lector input
+{
+    width: 100%;
+    height: 35px;
+    background: rgb(255, 255, 255);
+    border: 1px solid transparent;
+    border-radius: 28px;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    color: rgb(143, 143, 143);
+}
+body.oscuro .lector input
+{
+    background: rgb(22, 22, 44);
+}
+.contenido
+{
+    position: absolute;
+    width: 102%;
+    background: white;
+    margin-top: 3%;
+    /* border-radius: 25px; */
+    box-shadow: 5px 5px 10px black;
+    display: row;
+    align-items: center;
+    color: black;
+}
+body.oscuro .contenido
+{
+    background: rgb(22, 22, 44);
+    color: white;
+}
+.obciones 
+{
+    display: flex; 
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    color: black;
+}
+body.oscuro .obciones
+{
+    color: white;
+}
+body.oscuro .filtro
+{
+    color: white;
+}
+.limpiar
+{
+    position: absolute;
+    right: 2%;
+    color: black;
+}
+body.oscuro .limpiar
+{
+    color: white;
+}
+.obciones p
+{
+    position: absolute;
+    left: 2%;
+}
+.obciones button
+{
+    font-size: 15px;
+    background: transparent;
+    border: 1px solid transparent;
+   
+}
+.obciones button:hover
+{
+    color:rgb(23, 10, 136);
+}
+
+.tareas
+{
+    width: 100%;
+    height: 50px;
+}
+.sintarea
+{
+    display:none;
+}
+.li-tarea ul li
+{
+    
+    border-bottom: 2px solid rgb(65, 64, 64);
+    padding: 10px;
+    list-style-type: none;
+    display: flex;
+    position: relative;
+}
+.li-tarea ul li p
+{
+    font-size: 20px;
+    font-weight: 900;
+}
+.li-tarea ul li .btn-eliminar
+{
+    position: absolute;
+    left: 95%;
+    border: 1px solid transparent;
+    background: transparent;
+}
+.li-tarea ul li .option
+{
+    background: transparent;
+    position: absolute;
+    left: 2%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgb(75, 75, 75);
+}
+
+.li-tarea ul li .select
+{
+    position: absolute;
+    left: 2%;
+    background: linear-gradient(45deg, rgb(26, 136, 180),rgb(231, 10, 202) );
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: white;
+}   
+.li-tarea ul li p
+{
+    padding-left:30px;
+}
+.tachar
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
