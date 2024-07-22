@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </svelte:head>
 
-<div class="todo">
-    <div class="container" id="fondo">
+<main class="todo">
+    <section class="container" id="fondo">
         <div class="sub_container">
             <div class="lector">
                 <div class="titulo">
@@ -45,8 +45,8 @@
                     bind:value={taskInput}
                     on:keydown={addTask}
                 />
-                <div class="contenido">
-                    <div class="li-tarea">
+                <section class="contenido">
+                    <section class="li-tarea">
                         <ul>
                             {#each tasks as task, index}
                                 <li>
@@ -61,11 +61,11 @@
                                 </li>
                             {/each}
                         </ul>
-                    </div>
-                    <div class="tareas">
+                    </section>
+                    <section class="tareas">
                         <p>{tasks.length === 0 ? 'No tiene tarea pendientes.' : ''}</p>
-                    </div>
-                    <div class="obciones">
+                    </section>
+                    <section class="obciones">
                         <p>{tasks.length} item{tasks.length !== 1 ? 's' : ''}</p>
                         <div class="filtros">
                             <button class="filtro uno">todo</button>
@@ -73,12 +73,12 @@
                             <button class="filtro tres">completados</button>
                         </div>
                         <button class="limpiar" on:click={() => tasks = []}>Limpiar todo</button>
-                    </div>
-                </div>
+                    </section>
+                </section>
             </div>
         </div>            
-    </div>
-</div>
+    </section>
+</main>
 
 <style>
 	:global(body.oscuro){
