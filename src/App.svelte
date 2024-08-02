@@ -6,6 +6,7 @@
     let taskInput = '';
     let editMode = null;
     let editedText = '';
+    let filter = 'all';
 
     function toggleOscuro() {
         oscuro = !oscuro;
@@ -26,7 +27,7 @@
     async function handleAddTask(event) {
         if (event.key === 'Enter' && taskInput !== '') {
             try {
-                const response = await addTask({ title: taskInput, completed: false, description: "" });
+                const response = await addTask({ title: taskInput, completed: false, active: true, description: "" });
                 tasks = [...tasks, response.data.task];
                 taskInput = '';
                 console.log(response);
@@ -55,6 +56,16 @@
         }
     }
 
+    async function handleToggleActive(task) {
+        try {
+            const updatedTask = { ...task, active: !task.active };
+            await updateTask(task.id, updatedTask);
+            tasks = tasks.map(t => t.id === task.id ? updatedTask : t);
+        } catch (error) {
+            console.error("Error toggling task active status:", error);
+        }
+    }
+
     function startEditTask(task) {
         editMode = task.id;
         editedText = task.title;
@@ -71,6 +82,16 @@
             console.error("Error editing task:", error);
         }
     }
+
+    function setFilter(newFilter) {
+        filter = newFilter;
+    }
+
+    $: filteredTasks = tasks.filter(task => {
+        if (filter === 'active') return task.active;
+        if (filter === 'completed') return task.completed;
+        return true;
+    });
 </script>
 
 <svelte:head>
@@ -96,7 +117,7 @@
                 <div class="contenido">
                     <section class="li-tarea">
                         <ul>
-                            {#each tasks as task}
+                            {#each filteredTasks as task}
                                 <li>
                                     <button
                                         class="{task.completed ? 'select' : 'option'}"
@@ -107,6 +128,10 @@
                                     <p class="{task.completed ? 'tachar' : 'con'}">{task.title}</p>
                                     <button class="btn-eliminar" on:click={() => handleRemoveTask(task.id)}>X</button>
                                     <button class="btn-editar" on:click={() => startEditTask(task)}>✎</button>
+                                    <select class="select-active" on:change={() => handleToggleActive(task)} bind:value={task.active}>
+                                        <option class="opt" value={true}>Activo</option>
+                                        <option class="opt" value={false}>Inactivo</option>
+                                    </select>
                                     {#if editMode === task.id}
                                         <input type="text" class="input-editar" bind:value={editedText} />
                                         <button class="guard" on:click={() => handleEditTask(task.id, editedText)}> <strong>Guardar</strong></button>
@@ -121,10 +146,11 @@
                     <section class="opciones">
                         <p>{tasks.length} item{tasks.length !== 1 ? 's' : ''}</p>
                         <div class="filtros">
-                            <button class="filtro uno">todo</button>
-                            <button class="filtro dos">activos</button>
-                            <button class="filtro tres">completados</button>
+                            <button class="filtro uno" on:click={() => setFilter('all')}><strong>Todo</strong></button>
+                            <button class="filtro dos" on:click={() => setFilter('active')}><strong>Activos</strong></button>
+                            <button class="filtro tres" on:click={() => setFilter('completed')}><strong>Completados</strong></button>
                         </div>
+                        
                         <button class="limpiar" on:click={() => tasks = []}>Limpiar todo</button>
                     </section>
                 </div>
@@ -137,5 +163,28 @@
 	:global(body.oscuro){
 		background-color: black;
 	}
-	
+	:global(body.oscuro) .select-active {
+        background-color: black;
+        color: white;
+        background: transparent;
+    }
+    :global(body.oscuro) .opt {
+        color: black;
+    }
+    :global(body.oscuro) .btn-eliminar,
+    :global(body.oscuro) .btn-editar {
+        color: white;
+        
+    }
+    :global(body.oscuro) .btn-editar:hover {
+        color: blue;
+        
+    }
+    :global(body.oscuro) .btn-eliminar:hover {
+        color: red;
+        
+    }
+    :global(body.oscuro) .filtros button {
+        color: black;
+    }
 </style>
