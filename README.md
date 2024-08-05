@@ -62,9 +62,10 @@ async function loadTasks() {
 
 loadTasks();
 
+```
 ### `addTask`
 
-```
+
 Agrega una nueva tarea al backend.
 
 ```javascript
@@ -82,10 +83,10 @@ async function handleAddTask(event) {
 }
 
 
-
+```
 ### `updateTask`
 
-```
+
 Actualiza una tarea existente en el backend.
 
 ```javascript
@@ -102,10 +103,9 @@ async function handleEditTask(id, newText) {
     }
 }
 
-
+```
 ### `deleteTask`
 
-```
 Elimina una tarea del backend.
 
 ```javascript
@@ -121,6 +121,8 @@ async function handleRemoveTask(id) {
 
 # Funciones Principales
 
+
+
 ## Alternar Modo Oscuro
 ```
 ```javascript
@@ -130,9 +132,9 @@ function toggleOscuro() {
     document.querySelector('body').classList.toggle("oscuro");
 }
 
+```
 ### `editar tarea`
 
-```
 
 ```javascript
 
@@ -141,9 +143,10 @@ function startEditTask(task) {
     editedText = task.title;
 }
 
+```
 ### `establecer filtro`
 
-```
+
 
 ```javascript
 
